@@ -34,10 +34,11 @@
             <li><a href="#">working on it!!</a></li>
           </ul>
         </li>
-        <li><a href="#">Page 2</a></li>
-        <li><a href="#">Page 3</a></li>
+        <li><a href= "#">Page 2</a></li>
+        <li><a href= "#">Page 3</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li>{% block determiner %} {% endblock %}</li>
         <li><a href = "{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href = "{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
