@@ -5,10 +5,18 @@ Sign Up
 
 
 {% block content %}
+<style>
+div.relative{
+  position: relative;
+  left: 20px;
+}
+</style>
+<div class = "relative">
   <h2>Sign up</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Sign up</button>
   </form>
+    </div>
 {% endblock %}

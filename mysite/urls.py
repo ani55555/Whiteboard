@@ -23,9 +23,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_try, name = 'homepage'),
     path('search/', search_try, name = 'trysearching'),
-    path('profile/', profile_try, name = 'tryupgrading'),
+    path('profile/', profile_try, name = 'tryprofile'),
     path('signup/', signup_try.as_view(), name = 'signup'),
     path('', include('django.contrib.auth.urls')),
-    path('information/', information_try, name = 'tryinformation')
+    path('information/', information_try, name = 'tryinformation'),
+    path('logout/', logout_try, name = 'tryloggingout'),
+    path('login/', login_try, name = 'tryloggingin'),
+    path('login_error/', login_error_handle, name = 'tryloginerror'),
+    path('pwd_reset/', pwd_reset_try, name = 'tryreset'),
 
 ]

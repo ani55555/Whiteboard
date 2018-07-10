@@ -7,11 +7,11 @@
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title> {% block title %} Radiation Whiteboard {% endblock %} </title>
-
 </head>
+
 <body>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -29,35 +29,39 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Functionality <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href = "{% url 'tryupgrading' %}"> Profile </a></li>
+            <li><a href = "{% url 'tryprofile' %}"> Profile </a></li>
             <li><a href = "{% url 'trysearching' %}"> Patient Search </a></li>
-            <li><a href="#">working on it!!</a></li>
+            <li><a href = "{% url 'tryinformation' %}">Information</a></li>
           </ul>
         </li>
         <li><a href= "#">Page 2</a></li>
         <li><a href= "#">Page 3</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>{% block determiner %} {% endblock %}</li>
-        <li><a href = "{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href = "{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          {% if request.user.is_authenticated  %}
+            <li><a href = "{% url 'tryloggingout' %}"><span class = "glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li><a href = "{% url 'tryprofile' %}"><span class = "glyphicon glyphicon-user"></span> {{ user.get_username }}'s profile </a></href></li>
+          {% else %}
+            <li><a href = "{% url 'tryloggingin' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href = "{% url 'signup' %}"><span class="glyphicon glyphicon-exclamation-sign"></span> Sign Up</a></li>
+          {% endif %}
       </ul>
     </div>
   </div>
 </nav>
 
 <p>
-
       {% block content %}
       {% endblock %}
 </p>
 
+
+
+
+
 </body>
+
+
+
+
 </html>
-
-
-
-
-
-
-

@@ -1,0 +1,20 @@
+{% extends "polls/base.html" %}
+{% block title %}
+Error
+{% endblock %}
+
+
+
+
+{% block content %}
+    <center><b>
+        You aren't currently logged in. Use this link to do so-
+        <br/>
+        <a href = "{% url 'login' %}">Log In</a>
+        <br/>
+        or sign up using this one-
+        <br/>
+        <a href = "{% url 'signup' %}">Sign Up</a>
+    </b></center>
+
+{% endblock %}
