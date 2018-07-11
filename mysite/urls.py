@@ -30,6 +30,6 @@ urlpatterns = [
     path('logout/', logout_try, name = 'tryloggingout'),
     path('login/', login_try, name = 'tryloggingin'),
     path('login_error/', login_error_handle, name = 'tryloginerror'),
-    path('pwd_reset/', pwd_reset_try, name = 'tryreset'),
+    #path('pwd_reset/', pwd_reset_try, name = 'tryreset'),
 
 ]

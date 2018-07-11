@@ -24,8 +24,8 @@ def login_try(request):
 def home_try(request):
     return render(request, 'polls/home.html', {})
 
-def pwd_reset_try(request):
-    return render(request, 'registration/password_reset_form.html', {})
+#def pwd_reset_try(request):
+#    return render(request, 'registration/password_reset_form.html', {})
 
 
 @login_required(login_url = 'tryloginerror')
