@@ -7,7 +7,6 @@
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-     <link rel = "shortcut icon" type = "image/png" href = "C:\Users\msengar\AppData\Local\Programs\Python\Python36-32\Scripts\mysite\static\edgedancer_glyph_final.ico"
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title> {% block title %} Radiation Whiteboard {% endblock %} </title>
@@ -43,7 +42,7 @@
             <li><a href = "{% url 'tryloggingout' %}"><span class = "glyphicon glyphicon-log-out"></span> Logout</a></li>
             <li><a href = "{% url 'tryprofile' %}"><span class = "glyphicon glyphicon-user"></span> {{ user.get_username }}'s profile </a></href></li>
           {% else %}
-            <li><a href = "{% url 'tryloggingin' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href = "{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <li><a href = "{% url 'signup' %}"><span class="glyphicon glyphicon-console"></span> Sign Up</a></li>
           {% endif %}
       </ul>

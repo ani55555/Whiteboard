@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.http import *
 from mysite.urls import *
+from models.py import Patients
 from django import forms
 
 def login_error_handle(request):
@@ -17,15 +18,15 @@ class signup_try(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
+#def login_try(request):
+#    return render(request, 'registration/login.html', {})
 
-def login_try(request):
-    return render(request, 'registration/login.html', {})
 
 def home_try(request):
     return render(request, 'polls/home.html', {})
 
-#def pwd_reset_try(request):
-#    return render(request, 'registration/password_reset_form.html', {})
+def pwd_reset_try(request):
+    return render(request, 'registration/password_reset_form.html', {})
 
 
 @login_required(login_url = 'tryloginerror')
@@ -43,4 +44,12 @@ def information_try(request):
 
 @login_required(login_url = 'tryloginerror')
 def logout_try(request):
-        logout(request, next_page='polls/home.html')
+        logout(request)
+        return home_try(request)
+
+@login_required(login_url = 'tryloginerror')
+def PatientView(request):
+    context = {
+    'Patients' : Patients.objects.all()
+    }
+    return render(request, 'polls/search.html', context)

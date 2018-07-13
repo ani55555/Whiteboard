@@ -16,20 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from polls.views import *
+from django.contrib.auth import views as auth_views
 
 
-
+#know that path('password_reset/'...) is the builtin/generic django reset view -> CHANGE IT
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_try, name = 'homepage'),
     path('search/', search_try, name = 'trysearching'),
     path('profile/', profile_try, name = 'tryprofile'),
     path('signup/', signup_try.as_view(), name = 'signup'),
-    path('', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('information/', information_try, name = 'tryinformation'),
     path('logout/', logout_try, name = 'tryloggingout'),
-    path('login/', login_try, name = 'tryloggingin'),
+    path('login/', auth_views.login, name = 'login'),
     path('login_error/', login_error_handle, name = 'tryloginerror'),
-    #path('pwd_reset/', pwd_reset_try, name = 'tryreset'),
+    path('change_password/', auth_views.password_reset, name = 'passwordchangetry')
+    #path('change_password/',
+     #auth_views.PasswordChangeView.as_view(template_name = '')),
 
 ]
