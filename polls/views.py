@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.http import *
 from mysite.urls import *
-from models.py import Patients
+#from models.py import Patients
 from django import forms
 
 def login_error_handle(request):

@@ -49,6 +49,6 @@ class Patients(models.Model):
     s_date = models.DateField()
     e_date = models.DateField()
     comments_other = models.TextField()
-    def __str__(self):
-        return self.
-    total_fields = [First, Last, ID, Phone, Email, Status, Location, Doctor, Dosimetrist, Start, End]
+    #def __str__(self):
+    #    return self.
+    #total_fields = [First, Last, ID, Phone, Email, Status, Location, Doctor, Dosimetrist, Start, End]
