@@ -1,0 +1,21 @@
+{% extends "polls/base.html" %}
+{% block title %} Add {% endblock %}
+
+
+{% block content %}
+<h1> {{ title }} </h1>
+
+
+
+<form method = "POST" action = "/patients/">
+  <fieldset>
+    <legend> Create Entry </legend>
+    {% csrf_token %}
+    {{ form_add }}
+
+    <button type = "submit"> Create </button>
+  </fieldset>
+</form>
+
+
+{% endblock %}

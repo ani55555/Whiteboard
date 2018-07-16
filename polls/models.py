@@ -15,6 +15,8 @@ class Patients(models.Model):
     status = models.BooleanField(default = True)
     area_under_treatment = []
     referrer = models.CharField(max_length = 30)
+    start_date = models.DateField()
+    end_date = models.DateField()
 #Tuscaloosa, Winfield, Jasper, Demopolis, Anniston, Ft. Payne, Syl(coosa Valley regional), Montgomery, Gadsden
     LOCATIONS_CHOICES = [
     ('TUS', 'Tuscaloosa'),
@@ -46,8 +48,7 @@ class Patients(models.Model):
     facility = models.CharField(max_length = 3, choices = LOCATIONS_CHOICES)
     doctor = models.CharField(max_length = 30, choices = DOCTORS_CHOICES)
     dosimetrist = models.CharField(max_length = 30, choices = DOSIMETRIST_CHOICES)
-    s_date = models.DateField()
-    e_date = models.DateField()
+
     comments_other = models.TextField()
     #def __str__(self):
     #    return self.
