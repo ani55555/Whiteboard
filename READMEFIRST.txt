@@ -22,6 +22,8 @@ Yo! Welcome to my whiteboard. If you're looking to mess around with the source c
 5. (Optional) ---> If you wanna pull from Git, navigate to a desired directory and use git pull origin master on the Git command line. 
 You can download the Git command line here ---> https://git-scm.com/downloads
 Full documentation on how to use Git here ---> https://git-scm.com/docs
+1. Navigate to desired Directory
+2. Git init
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
