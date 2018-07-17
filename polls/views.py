@@ -64,7 +64,7 @@ class AddPatients(View):
     template_name = 'polls/add.html'
     def get(self, request):
         form_add = PatientAddForm()
-        attr_list = list(form_add.fields)
+        attr_list = PatientAddForm().fields
         return render(request, self.template_name, {
         'title' : "Add Patient",
         'patient_list' : patient_list,

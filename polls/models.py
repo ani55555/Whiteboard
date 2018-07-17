@@ -1,23 +1,19 @@
 from django.db import models
-
-
+from django import forms
+import calendar
 
 
 
 
 #django default name for this table is polls_patient (i think)
 class Patients(models.Model):
-    first_name = models.CharField(max_length = 30)
-    last_name  = models.CharField(max_length = 30)
-    identification = models.IntegerField()
-    phone_number = models.IntegerField()
-    email = models.EmailField(blank = True)
-    status = models.BooleanField(default = True)
-    area_under_treatment = []
-    referrer = models.CharField(max_length = 30)
-    start_date = models.DateField()
-    end_date = models.DateField()
-#Tuscaloosa, Winfield, Jasper, Demopolis, Anniston, Ft. Payne, Syl(coosa Valley regional), Montgomery, Gadsden
+    #choice options for field widgets
+    STATUS_CHOICES = [
+    ('A' , 'Active'),
+    ('I' , 'Inactive')
+    ]
+
+
     LOCATIONS_CHOICES = [
     ('TUS', 'Tuscaloosa'),
     ('WIN', 'Winfield'),
@@ -45,6 +41,23 @@ class Patients(models.Model):
     ('MAP', 'Maples')
     ]
 
+
+
+
+
+    first_name = models.CharField(max_length = 30)
+    last_name  = models.CharField(max_length = 30)
+    identification = models.IntegerField()
+    phone_number = models.IntegerField()
+    email = models.EmailField(blank = True)
+
+    area_under_treatment = []
+    referrer = models.CharField(max_length = 30)
+    start_date = models.DateField()
+    end_date = models.DateField()
+#Tuscaloosa, Winfield, Jasper, Demopolis, Anniston, Ft. Payne, Syl(coosa Valley regional), Montgomery, Gadsden
+
+    status = models.CharField(max_length = 15, choices = STATUS_CHOICES)
     facility = models.CharField(max_length = 3, choices = LOCATIONS_CHOICES)
     doctor = models.CharField(max_length = 30, choices = DOCTORS_CHOICES)
     dosimetrist = models.CharField(max_length = 30, choices = DOSIMETRIST_CHOICES)

@@ -1,4 +1,8 @@
-.button {
+@import "BS_source/scss/bootstrap";
+
+
+
+.custombutton {
 	background-color: #42f4eb;
 	border : none;
 	color : #f44244;
@@ -9,5 +13,3 @@
 	font-size : 12px;
 	border-radius : 7px;
 }
-
-

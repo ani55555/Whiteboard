@@ -3,19 +3,24 @@
 
 
 {% block content %}
+<style>
+.relative{
+  position : relative;
+  left : 20px;
+}
+</style>
+
+<div class = "relative">
 <h1> {{ title }} </h1>
-
-
 
 <form method = "POST" action = "/patients/">
   <fieldset>
     <legend> Create Entry </legend>
     {% csrf_token %}
     {{ form_add.as_p }}
-
     <button type = "submit"> Create </button>
   </fieldset>
 </form>
-
+</div>
 
 {% endblock %}
