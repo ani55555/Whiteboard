@@ -59,6 +59,10 @@ you need to be using a standard command prompt for this
 	https://atom.io/
 
 NOTES:
+ADMIN PAGE LOGIN--
+
+
+
 (Optional) ---> If you wanna pull from Git, navigate to a desired directory and use git pull origin master on the Git command line. 
 You can download the Git command line here ---> https://git-scm.com/downloads
 Full documentation on how to use Git here ---> https://git-scm.com/docs

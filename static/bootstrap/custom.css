@@ -1,29 +1,26 @@
-.custombutton {
-  background-color: #42f4eb;
-  border: none;
-  color: #f44244;
-  padding: 7px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  border-radius: 7px;
-}
+/*
 
+#ff0000
+#b800dd
+#0a00a0
+#ffffff
+#000000
+#ffff00
+*/
 
 
 .navbar{
 	min-height : 85px !important;
-  background-color : #16f4f1 !important;
+  background-color : #ffff00 !important;
 }
 
 .navbar .navbar-brand{
   color : #000000 !important;
   font-size : 2.1em !important;
-  font-family : titillium-web;
+  font-family: 'Montserrat', sans-serif;
 }
 
 
 .navbar .nav-item a{
-  color : #000000 !important;
+  color : #0000ff !important;
 }
