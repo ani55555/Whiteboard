@@ -13,3 +13,31 @@
 	font-size : 12px;
 	border-radius : 7px;
 }
+
+
+.navbar{
+	min-height : 80px;
+}
+
+.navbar-brand {
+	padding : 0 15px;
+	height : 80px;
+	line-height : 80px;
+}
+
+
+
+.navbar-toggler
+{
+	margin-top : 23px;
+	padding : 9px 10px !important;
+}
+
+@media (@min-width : 768px)
+{
+	.navbar-nav > li > a {
+		padding-top : 26.5px;
+		padding-bottom : 26.5px;
+		line-height : 27px;
+	}
+}

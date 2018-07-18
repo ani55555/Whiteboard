@@ -6,27 +6,46 @@
 <head>
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1">
-     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
-     <link rel = "stylesheet" type = "text/css"
-     href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
-     integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-     crossorigin="anonymous">
+<!-- BELOW ARE ALL THE CDN-BASED DEPENDENCIES. MAKE A NOTE TO SYSTEMATICALLY AND MANUALLY INSTALL ALL THE CSS/SCSS FILES IN THE REPO -->
 
+    <link rel = "stylesheet" type = "text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+    integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+    crossorigin="anonymous">
 
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.js"
-     integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
-     crossorigin="anonymous">
-     </script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
 
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-     crossorigin="anonymous">
-     </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/fontawesome.css"
+    integrity="sha384-0b7ERybvrT5RZyD80ojw6KNKz6nIAlgOKXIcJ0CV7A6Iia8yt2y1bBfLBOwoc9fQ"
+    crossorigin="anonymous">
 
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/solid.css"
+    integrity="sha384-S2gVFTIn1tJ/Plf+40+RRAxBCiBU5oAMFUJxTXT3vOlxtXm7MGjVj62mDpbujs4C"
+    crossorigin="anonymous">
 
-    <title> {% block title %} Radiation Whiteboard {% endblock %} </title>
+    {% load static %}
+    <link rel = "stylesheet" href = "{% static "bootstrap/custom.css" %}">
+
+<!-- START JS DEPENDENCIES -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js"
+    integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+    crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous">
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+
+<!-- END ALL DEPENDENCIES -->
+
+    <title> {% block title %}  {% endblock %} </title>
 </head>
 
 
@@ -35,10 +54,9 @@
 
 
 
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light" style = "background-color : #35fff1;">
-    <a class="navbar-brand" href="#">Whiteboard</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <b><a class="navbar-brand" href="#">Whiteboard</a></b>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -46,7 +64,7 @@
       {% if request.user.is_authenticated %}
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
         </li>
 
         <li class="nav-item dropdown">
@@ -76,17 +94,17 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class = "nav-item">
-        <a class = "nav-link" href = "{% url 'tryloggingout' %}"> Log Out </a>
+        <a class = "nav-link" href = "{% url 'tryloggingout' %}"> <span class = "fas fa-sign-out-alt"></span> Log Out </a>
       </li>
     </ul>
         {% else %}
 
     <ul class="navbar-nav ml-auto">
         <li class = "nav-item">
-          <a class = "nav-link" href = "{% url 'login' %}"> Log In </a>
+          <a class = "nav-link" href = "{% url 'login' %}"><span class = "fas fa-sign-in-alt"></span> Log In </a>
         </li>
         <li class = "nav-item">
-          <a class = "nav-link" href = "{% url 'signup' %}"> Sign Up </a>
+          <a class = "nav-link" href = "{% url 'signup' %}"><span class = "fas fa-angle-double-up"></span> Sign Up </a>
         </li>
       </ul>
 
