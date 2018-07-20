@@ -47,22 +47,22 @@ class Patients(models.Model):
 
     first_name = models.CharField(max_length = 30)
     last_name  = models.CharField(max_length = 30)
-    identification = models.IntegerField()
-    phone_number = models.IntegerField()
-    email = models.EmailField(blank = True)
+    identification = models.IntegerField(null = True, blank = True)
+    phone_number = models.IntegerField(null = True, blank = True)
+    email = models.EmailField(null = True, blank = True)
 
     area_under_treatment = []
-    referrer = models.CharField(max_length = 30)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    referrer = models.CharField(max_length = 30, blank = True)
+    start_date = models.DateField(null = True, blank = True)
+    end_date = models.DateField(null = True, blank = True)
 #Tuscaloosa, Winfield, Jasper, Demopolis, Anniston, Ft. Payne, Syl(coosa Valley regional), Montgomery, Gadsden
 
-    status = models.CharField(max_length = 15, choices = STATUS_CHOICES)
-    facility = models.CharField(max_length = 3, choices = LOCATIONS_CHOICES)
-    doctor = models.CharField(max_length = 30, choices = DOCTORS_CHOICES)
-    dosimetrist = models.CharField(max_length = 30, choices = DOSIMETRIST_CHOICES)
+    status = models.CharField(max_length = 15, choices = STATUS_CHOICES, blank = True)
+    facility = models.CharField(max_length = 3, choices = LOCATIONS_CHOICES, blank = True)
+    doctor = models.CharField(max_length = 30, choices = DOCTORS_CHOICES, blank = True)
+    dosimetrist = models.CharField(max_length = 30, choices = DOSIMETRIST_CHOICES, blank = True)
 
-    comments_other = models.TextField()
+    comments_other = models.TextField(blank = True)
     #def __str__(self):
     #    return self.
     #total_fields = [First, Last, ID, Phone, Email, Status, Location, Doctor, Dosimetrist, Start, End]

@@ -9,9 +9,16 @@
 */
 
 
+
+.shit{
+  position: relative !important;
+  left: 20px !important;
+}
+
+
 .navbar{
 	min-height : 85px !important;
-  background-color : #ffff00 !important;
+  background-color : #ffff00  !important;
 }
 
 .navbar .navbar-brand{
@@ -22,5 +29,5 @@
 
 
 .navbar .nav-item a{
-  color : #0000ff !important;
+  color : #000000 !important;
 }

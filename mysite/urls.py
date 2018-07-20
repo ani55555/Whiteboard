@@ -24,16 +24,16 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_try, name = 'homepage'),
     path('signup/', signup_try.as_view(), name = 'signup'),
-    path('search/', SearchPatients.as_view(), name = 'trysearching'),
-    path('add/', AddPatients.as_view(), name = 'tryadding'),
+    path('add/', addpatients, name = 'tryadding'),
     path('profile/', profile_try, name = 'tryprofile'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('information/', information_try, name = 'tryinformation'),
     path('logout/', logout_try, name = 'tryloggingout'),
     path('login/', auth_views.login, name = 'login'),
     path('login_error/', login_error_handle, name = 'tryloginerror'),
-    path('change_password/', auth_views.password_reset, name = 'passwordchangetry')
-    #path('change_password/',
-     #auth_views.PasswordChangeView.as_view(template_name = '')),
+    path('change_password/', auth_views.password_reset, name = 'passwordchangetry'),
+    path('table_view/', table_try, name = 'try_table'),
+
+
 
 ]

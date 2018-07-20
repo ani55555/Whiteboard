@@ -1,0 +1,50 @@
+{% extends 'polls/base.html' %}
+
+
+{% block title %}
+Table View
+{% endblock %}
+
+
+
+{% block content %}
+<div class = "shit">
+<h2> Filterable Table </h2>
+<p>Type something in the field to search by all fields:</p>
+<input class="form-control" id="myInput" type="text" placeholder="Search">
+</div>
+</br>
+<table class="table table-hover indexed table-dark">
+  <thead>
+    <tr>
+      {% for field in flist %}
+      <th scope = "col"> {{ field }} </th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody id = "pTable" >
+    {% for vtuple in vlist %}
+    <tr>
+      {% for v in vtuple %}
+        <td> {{ v }} </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#pTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+
+</script>
+{% endblock %}

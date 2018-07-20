@@ -44,6 +44,8 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
 
+<!-- Jquery plugin scripts -->
+
 <!-- END ALL DEPENDENCIES -->
 
     <title> {% block title %}  {% endblock %} </title>
@@ -57,7 +59,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light">
-    <b><a class="navbar-brand" href="#">WHITEBOARD</a></b>
+    <b><a class="navbar-brand" href="homepage">WHITEBOARD</a></b>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -65,7 +67,7 @@
       {% if request.user.is_authenticated %}
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#"> Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'homepage' %}"> Home <span class="sr-only">(current)</span></a>
         </li>
 
         <li class="nav-item dropdown">
@@ -80,15 +82,15 @@
 
             <div class="dropdown-divider"></div>
 
-            <a class="dropdown-item" href="{% url 'trysearching' %}"> Search Patient </a>
-
-            <div class="dropdown-divider"></div>
-
             <a class="dropdown-item" href="{% url 'tryadding' %}">Add Patient</a>
 
             <div class="dropdown-divider"></div>
 
             <a class="dropdown-item" href="{% url 'tryinformation' %}"> Information </a>
+
+            <div class="dropdown-divider"></div>
+
+            <a class="dropdown-item" href="{% url 'try_table' %}"> Table View </a>
 
           </div>
         </li>
@@ -127,8 +129,8 @@
 
 
 <p>
-      {% block content %}
-      {% endblock %}
+{% block content %}
+{% endblock %}
 </p>
 
 
