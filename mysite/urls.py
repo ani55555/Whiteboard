@@ -33,6 +33,8 @@ urlpatterns = [
     path('login_error/', login_error_handle, name = 'tryloginerror'),
     path('change_password/', auth_views.password_reset, name = 'passwordchangetry'),
     path('table_view/', table_try, name = 'try_table'),
+    path('search/', searchpatients, name = 'try_search'),
+    path('displayed/', displayed_try, name = 'try_displayed'),
 
 
 

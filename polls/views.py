@@ -5,10 +5,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic.edit import UpdateView
 from django.views import View
 from django.http import *
 from mysite.urls import *
-from polls.forms import PatientAddForm, PatientViewForm
+from polls.forms import PatientAddForm, PatientSearchForm
 from polls.models import Patients
 from django import forms
 import datetime
@@ -48,6 +49,12 @@ def logout_try(request):
 
 
 
+
+
+
+
+
+
 @login_required(login_url = 'tryloginerror')
 def addpatients(request):
     form = PatientAddForm(request.POST or None)
@@ -57,10 +64,9 @@ def addpatients(request):
     return render(request, 'polls/add.html', context)
 
 
+
 @login_required(login_url = 'tryloginerror')
 def table_try(request):
-    resultant_fields = []
-    resultant_values = []
     tdata = list(Patients.objects.all())
     flist = [f.name for f in Patients._meta.get_fields()]
     vlist = [x for x in Patients.objects.values_list()]
@@ -70,3 +76,38 @@ def table_try(request):
     'vlist' : vlist,
     }
     return render(request, 'polls/table_view.html', context)
+
+
+
+
+@login_required(login_url = 'tryloginerror')
+def searchpatients(request):
+        form = PatientSearchForm(request.POST or None)
+        if form.is_valid():
+            request.session['fdata'] = form.cleaned_data['first_name']
+            request.session['ldata'] = form.cleaned_data['last_name']
+        context = {
+        'form_search' : form,
+        }
+        return render(request, 'polls/search.html', context)
+
+
+@login_required(login_url = 'tryloginerror')
+def displayed_try(request):
+        fdata = request.session['fdata']
+        ldata = request.session['ldata']
+        results = Patients.objects.filter(
+        first_name__icontains = fdata
+        ).filter(
+        last_name__icontains = ldata
+        ).values_list('first_name', 'last_name', 'phone_number', 'status')
+        context = {
+        'results' : results
+        }
+        return render(request, 'polls/displayed.html', context)
+
+
+class EditPatient(UpdateView):
+    model = Patients
+    fields = '__all__'
+    template_name_suffix = '_update_form'

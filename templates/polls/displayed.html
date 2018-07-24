@@ -1,0 +1,28 @@
+{% extends "polls/base.html" %}
+{% block title %} Results {% endblock %}
+
+{% block content %}
+<div class = "shit">
+
+<table class="table table-hover indexed table-dark">
+  <thead>
+    <tr>
+      <th scope = "col"> "First Name" </th>
+      <th scope = "col"> "Last Name" </th>
+      <th scope = "col"> "Phone" </th>
+      <th scope = "col"> "Status" </th>
+    </tr>
+    </thead>
+  <tbody id = "rtable">
+    {% for x in results %}
+    <tr>
+      {% for v in x %}
+        <td> {{ v }} </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endblock %}

@@ -3,16 +3,30 @@
 
 
 {% block content %}
-<h1> {{ title }} </h1>
 
-<!--
-{% for entry in patient_list %}
-<ul>
-  <li> {{ entry }} <li>
-</ul>
-{% endfor %}
 
--->
+
+
+  <div class = "shit">
+  <h1> Search </h1>
+  <br>
+  <br>
+  <br>
+
+  <form method = "POST" action = "/displayed/">
+    <fieldset>
+      <legend> Search Entry </legend>
+      {% csrf_token %}
+      {{ form_search.as_p }}
+      <button type = "submit"> Search </button>
+    </fieldset>
+  </form>
+
+
+
+</div>
+
+
 
 
 
