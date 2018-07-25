@@ -1,0 +1,21 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}
+List View
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class = "shit">
+{% for x in patients %}
+
+<li> {{x.id}} --> {{x}}
+<a href = "{% url 'edit'  pk=x.id %}"> Edit </a>
+<a href = "{% url 'see'  pk=x.id %}"> See </a>
+</li>
+
+{% endfor %}
+</div>
+{% endblock %}

@@ -35,6 +35,11 @@ urlpatterns = [
     path('table_view/', table_try, name = 'try_table'),
     path('search/', searchpatients, name = 'try_search'),
     path('displayed/', displayed_try, name = 'try_displayed'),
+    path('listdisplay/', listdisplay.as_view(), name = 'listdisplay'),
+    path('edit/<int:pk>', EditPatientView.as_view(), name = 'edit'),
+    path('see/<int:pk>', SeePatientInfo.as_view(), name = 'see'),
+
+
 
 
 

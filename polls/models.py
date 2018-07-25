@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.urls import reverse
 import calendar
 
 
@@ -47,6 +48,7 @@ class Patients(models.Model):
 
     first_name = models.CharField(max_length = 30)
     last_name  = models.CharField(max_length = 30)
+
     identification = models.IntegerField(null = True, blank = True)
     phone_number = models.IntegerField(null = True, blank = True)
     email = models.EmailField(null = True, blank = True)
@@ -63,6 +65,10 @@ class Patients(models.Model):
     dosimetrist = models.CharField(max_length = 30, choices = DOSIMETRIST_CHOICES, blank = True)
 
     comments_other = models.TextField(blank = True)
-    #def __str__(self):
-    #    return self.
-    #total_fields = [First, Last, ID, Phone, Email, Status, Location, Doctor, Dosimetrist, Start, End]
+
+
+    def __str__(self):
+        return '%s %s' % (self.first_name, self.last_name)
+
+    def get_absolute_url(self):
+        return reverse('patient-details', kwargs = {'id' : self.id})
