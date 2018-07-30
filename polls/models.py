@@ -67,6 +67,9 @@ class Patients(models.Model):
     comments_other = models.TextField(blank = True)
 
 
+
+
+
     def __str__(self):
         return '%s %s' % (self.first_name, self.last_name)
 

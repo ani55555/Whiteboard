@@ -4,8 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from django.core import serializers
 from django.views.generic import DetailView, CreateView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, FormView
 from django.views.generic.list import ListView
 from django.views import View
 from django.http import *
@@ -81,29 +82,20 @@ def table_try(request):
 # THESE VIEWS ARE STILL IN PROGRESS PLS BE PATIENT HAHA GET IT? 'PATIENT' HAHAHAHAHAAAAAAAAA
 
 
-@login_required(login_url = 'tryloginerror')
-def searchpatients(request):
-        form = PatientSearchForm(request.POST or None)
-        context = {
-        'form_search' : form,
-        }
-        return render(request, 'polls/search.html', context)
+
+class searchpatients(FormView):
+        template_name = 'polls/search.html'
+        form_class = PatientSearchForm
+        success_url = '../table_view'
+        def runthisshit(self, request):
+            if self.form.is_valid:
+                return render(request, 'polls/home.html')
 
 
-@login_required(login_url = 'tryloginerror')
-def displayed_try(request):
-    form = request.POST.get('pls', '')
-    fdata = form.cleaned_data['first_name']
-    ldata = form.cleaned_data['last_name']
-    results = Patients.objects.filter(
-    first_name__icontains = fdata
-    ).filter(
-    last_name__icontains = ldata
-    ).values_list('first_name', 'last_name', 'phone_number', 'status')
-    context = {
-    'results' : results
-    }
-    return render(request, 'polls/displayed.html', context)
+
+
+
+
 
 
 
@@ -122,14 +114,21 @@ class listdisplay(ListView):
     context_object_name = "patients"
 
 
-
 class EditPatientView(UpdateView):
     model = Patients
+    template_name = 'polls/edit.html'
     fields = '__all__'
     success_url = '../table_view'
 
 
-
 class SeePatientInfo(DetailView):
     model = Patients
-    fields = '__all__'
+    template_name = 'polls/see.html'
+    def get_context_data(self, **kwargs):
+        vlist = [x for x in Patients.objects.values_list()]
+        flist = [f.name for f in Patients._meta.get_fields()]
+        truelist = vlist[self.kwargs['pk'] - 1]
+        zippedupshit = zip(flist, truelist)
+        context = super(SeePatientInfo, self).get_context_data(**kwargs)
+        context['zippedupshit'] = zippedupshit
+        return context
