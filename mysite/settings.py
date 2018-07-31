@@ -86,10 +86,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # 'ENGINE' : 'django.db.backends.postgresql',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        # 'NAME' :
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'radiation_whiteboard',
+        'USER' : 'mrmelonlord',
+        'PASSWORD' : 'password2566224139',
+        'HOST' : 'alcc.czn7iiyhhjhk.us-east-2.rds.amazonaws.com',
+        'PORT' : '5432'
     }
 }
 
@@ -159,10 +161,12 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = FROM_EMAIL
 
 # Enter your gmail PW from the ADMINS email entered above.
-EMAIL_HOST_PASSWORD = 'Edwardneel1901'
+
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 3600
+SESSION_SAVE_EVERY_REQUEST = True
+CSRF_USE_SESSIONS = True

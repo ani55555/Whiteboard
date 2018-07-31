@@ -6,15 +6,29 @@
 #ffffff
 #000000
 #ffff00
+#01ABAA
+#FEA680
+#4CDEF5
+
 */
 
 
 
+
+body{
+  background-color: #000000 !important;
+}
+
+
 .shit{
+  color: #ffffff !important;
   position: relative !important;
   left: 20px !important;
 }
 
+.trash{
+  color: #ffffff !important;
+}
 
 .navbar{
 	min-height : 85px !important;

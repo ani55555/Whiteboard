@@ -16,6 +16,10 @@ class PatientSearchForm(ModelForm):
 
 
 
+
+
+
+
 class PatientAddForm(ModelForm):
     class Meta:
         model = Patients

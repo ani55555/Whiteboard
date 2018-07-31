@@ -83,14 +83,41 @@ def table_try(request):
 
 
 
-class searchpatients(FormView):
-        template_name = 'polls/search.html'
-        form_class = PatientSearchForm
-        success_url = '../table_view'
-        def runthisshit(self, request):
-            if self.form.is_valid:
-                return render(request, 'polls/home.html')
+'''class searchpatients(FormView):
+    template_name = 'polls/search.html'
+    form_class = PatientSearchForm
+    success_url = '../searchresults/'
+    def form_valid(self, form):
+        #self.request.session['x'] = form.cleaned_data['first_name']
+        #self.request.session['y'] = form.cleaned_data['last_name']
+        self.request.session['fdata'] = Patients.objects.filter(first_name__icontains=form.cleaned_data['first_name']).filter(last_name__icontains=form.cleaned_data['last_name']).values_list()
+        return redirect('searchresults')
+    def form_invalid(self, form):
+        return redirect('home_try')'''
 
+
+@login_required(login_url = 'tryloginerror')
+def searchpatients(request):
+    if request.POST:
+        form = PatientSearchForm(request.POST)
+        if form.is_valid():
+            request.session['fname'] = form.cleaned_data["first_name"]
+            request.session['lname'] = form.cleaned_data["last_name"]
+            return redirect('searchresults')
+    form = PatientSearchForm()
+    return render(request, 'polls/search.html', {'form' : form})
+
+
+@login_required(login_url = 'tryloginerror')
+def searchresults(request):
+    firstn = request.session.get('fname')
+    lastn = request.session.get('lname')
+    a = Patients.objects.filter(first_name__icontains=firstn).filter(last_name__icontains=lastn).values_list('id','first_name', 'last_name', 'identification', 'phone_number')
+    x = [list(tuple) for tuple in a]
+    context = {
+    'x' : x,
+    }
+    return render(request, 'polls/searchresults.html', context)
 
 
 

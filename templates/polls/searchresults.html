@@ -1,0 +1,23 @@
+{% extends "polls/base.html" %}
+{% block title %} Search Results {% endblock %}
+
+
+{% block content %}
+<div class = "shit"/>
+{% for item in x %}
+  <p>
+    <h1> {{item.1}} {{item.2}} </h1>
+  {% for value in item %}
+  <li> {{value}} </li>
+  {% endfor %}
+  </p>
+  <br>
+  <br>
+{% endfor %}
+
+
+
+
+
+
+{% endblock %}
