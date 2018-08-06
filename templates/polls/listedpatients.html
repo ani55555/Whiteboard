@@ -14,6 +14,7 @@ List View
 <li> {{x.id}} --> {{x}}
 <a href = "{% url 'edit'  pk=x.id %}"> Edit </a>
 <a href = "{% url 'see'  pk=x.id %}"> See </a>
+<a href = "{% url 'delete'  pk=x.id %}"> Delete </a>
 </li>
 
 {% endfor %}

@@ -16,30 +16,30 @@ class Patients(models.Model):
 
 
     LOCATIONS_CHOICES = [
-    ('TUS', 'Tuscaloosa'),
-    ('WIN', 'Winfield'),
-    ('JAS', 'Jasper'),
-    ('DEM', 'Demopolis'),
-    ('ANN', 'Anniston'),
-    ('FTP', 'Fort Payne'),
-    ('SYL', 'Sylacauga'),
-    ('MON', 'Montgomery'),
-    ('GAD', 'Gadsden'),
+    ('Tuscaloosa', 'Tuscaloosa'),
+    ('Winfield', 'Winfield'),
+    ('Jasper', 'Jasper'),
+    ('Demopolis', 'Demopolis'),
+    ('Anniston', 'Anniston'),
+    ('Fort Payne', 'Fort Payne'),
+    ('Sylacauga', 'Sylacauga'),
+    ('Montgomery', 'Montgomery'),
+    ('Gadsden', 'Gadsden'),
     ]
 
     DOCTORS_CHOICES = [
-    ('BEA', 'Beatrous'),
-    ('CAM', 'Campbell'),
-    ('DRK', 'Drake'),
-    ('HOB', 'Hobeika'),
-    ('PNK', 'Pinkston'),
-    ('SAN', 'Sanford'),
+    ('Beatrous', 'Beatrous'),
+    ('Campbell', 'Campbell'),
+    ('Drake', 'Drake'),
+    ('Hobeika', 'Hobeika'),
+    ('Pinkston', 'Pinkston'),
+    ('Sanford', 'Sanford'),
     ]
 
     DOSIMETRIST_CHOICES = [
-    ('TAT', 'Tatum'),
-    ('HUN', 'Hunter'),
-    ('MAP', 'Maples')
+    ('Tatum', 'Tatum'),
+    ('Hunter', 'Hunter'),
+    ('Maples', 'Maples')
     ]
 
 
@@ -50,20 +50,19 @@ class Patients(models.Model):
     last_name  = models.CharField(max_length = 30)
 
     identification = models.IntegerField(null = True, blank = True)
-    phone_number = models.IntegerField(null = True, blank = True)
+    phone_number = models.BigIntegerField(null = True, blank = True)
     email = models.EmailField(null = True, blank = True)
 
     area_under_treatment = []
     referrer = models.CharField(max_length = 30, blank = True)
     start_date = models.DateField(null = True, blank = True)
     end_date = models.DateField(null = True, blank = True)
-#Tuscaloosa, Winfield, Jasper, Demopolis, Anniston, Ft. Payne, Syl(coosa Valley regional), Montgomery, Gadsden
+    #Tuscaloosa, Winfield, Jasper, Demopolis, Anniston, Ft. Payne, Syl(coosa Valley regional), Montgomery, Gadsden
 
-    status = models.CharField(max_length = 15, choices = STATUS_CHOICES, blank = True)
-    facility = models.CharField(max_length = 3, choices = LOCATIONS_CHOICES, blank = True)
+    status = models.CharField(max_length = 30, choices = STATUS_CHOICES, blank = True)
+    facility = models.CharField(max_length = 30, choices = LOCATIONS_CHOICES, blank = True)
     doctor = models.CharField(max_length = 30, choices = DOCTORS_CHOICES, blank = True)
     dosimetrist = models.CharField(max_length = 30, choices = DOSIMETRIST_CHOICES, blank = True)
-
     comments_other = models.TextField(blank = True)
 
 

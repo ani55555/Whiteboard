@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.core import serializers
 from django.views.generic import DetailView, CreateView
-from django.views.generic.edit import UpdateView, FormView
+from django.views.generic.edit import UpdateView, FormView, DeleteView
 from django.views.generic.list import ListView
 from django.views import View
 from django.http import *
@@ -83,17 +83,7 @@ def table_try(request):
 
 
 
-'''class searchpatients(FormView):
-    template_name = 'polls/search.html'
-    form_class = PatientSearchForm
-    success_url = '../searchresults/'
-    def form_valid(self, form):
-        #self.request.session['x'] = form.cleaned_data['first_name']
-        #self.request.session['y'] = form.cleaned_data['last_name']
-        self.request.session['fdata'] = Patients.objects.filter(first_name__icontains=form.cleaned_data['first_name']).filter(last_name__icontains=form.cleaned_data['last_name']).values_list()
-        return redirect('searchresults')
-    def form_invalid(self, form):
-        return redirect('home_try')'''
+
 
 
 @login_required(login_url = 'tryloginerror')
@@ -130,6 +120,7 @@ def addpatients(request):
     form = PatientAddForm(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect ('listdisplay')
     context = {'form_add' : form}
     return render(request, 'polls/add.html', context)
 
@@ -159,3 +150,7 @@ class SeePatientInfo(DetailView):
         context = super(SeePatientInfo, self).get_context_data(**kwargs)
         context['zippedupshit'] = zippedupshit
         return context
+
+class DeletePatientView(DeleteView):
+    model = Patients
+    success_url = '../listdisplay'

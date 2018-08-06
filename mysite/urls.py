@@ -39,6 +39,7 @@ urlpatterns = [
     path('listdisplay/', listdisplay.as_view(), name = 'listdisplay'),
     path('edit/<int:pk>', EditPatientView.as_view(), name = 'edit'),
     path('see/<int:pk>', SeePatientInfo.as_view(), name = 'see'),
+    path('delete/<int:pk>', DeletePatientView.as_view(), name = 'delete'),
 
 
 

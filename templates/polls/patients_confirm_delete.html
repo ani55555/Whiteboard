@@ -1,0 +1,12 @@
+{% extends "polls/base.html" %}
+{% block title %} Add {% endblock %}
+
+{% block content %}
+<div class = "shit">
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete?</p>
+    <input type="submit" value="Confirm">
+</form>
+</div>
+
+{% endblock %}
